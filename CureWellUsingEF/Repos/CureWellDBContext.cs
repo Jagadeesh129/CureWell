@@ -19,7 +19,6 @@ public partial class CureWellDBContext : DbContext
 
     public virtual DbSet<DoctorSpecialization> DoctorSpecializations { get; set; }
 
-    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
 
     public virtual DbSet<Specialization> Specializations { get; set; }
 
@@ -49,10 +48,6 @@ public partial class CureWellDBContext : DbContext
             entity.HasOne(d => d.SpecializationCodeNavigation).WithMany(p => p.DoctorSpecializations).HasConstraintName("FK__DoctorSpe__Speci__4E88ABD4");
         });
 
-        modelBuilder.Entity<RefreshToken>(entity =>
-        {
-            entity.HasKey(e => e.UserId).HasName("PK__RefreshT__CB9A1CFF0882BAD5");
-        });
 
         modelBuilder.Entity<Specialization>(entity =>
         {
